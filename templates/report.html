@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 50%
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+
+        .parentCell {
+            position: relative;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            z-index: 100;
+            border: 1px;
+            background-color: #eef;
+            border: 1px dotted black;
+            padding: 3px;
+            color: black;
+            top: 20px;
+            left: 20px;
+        }
+
+        .parentCell:hover span.tooltip {
+            display: block;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #eee;
+        }
+    </style>
+
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <h1><i>DarkTrace</i> Output for " {{ title }} "</h1>
+
+    <h2>uses-permission</h2>
+    <a style="color:lightgray"><i><u>Hover over a pemission to get more info on it</u></i></a>
+    <table id="uses-permission-table">
+        {% for item in permissions %}
+        <tr>
+            <td class="parentCell">
+                {% if item.whitelisted == "true" %}
+                <a style="color:lawngreen">{{ item.name }}</a>
+                <span class="tooltip">{{ item.info }}</span>
+
+                {% elif item.whitelisted == "false" %}
+                <a style="color:red">{{ item.name }}</a>
+                <span class="tooltip">{{ item.info }}</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>uses-feature</h2>
+
+    <table id="uses-permission-table">
+        {% for item in features %}
+        <tr>
+            <td class="parentCell">
+                {% if item.whitelisted == "true" %}
+                <a style="color:lawngreen">{{ item.name }}</a>
+                <span class="tooltip">{{ item.info }}</span>
+
+                {% elif item.whitelisted == "false" %}
+                <a style="color:red">{{ item.name }}</a>
+                <span class="tooltip">{{ item.info }}</span>
+
+                {% else %}
+                <a>{{ item.name }}</a>
+
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>More info on...</h2>
+    <ul>
+        <li><a href="https://developer.android.com/guide/topics/permissions/overview">              Android Permissions Overview</a></li>
+        <li><a href="https://developer.android.com/guide/topics/manifest/uses-permission-element">  uses-permission</a></li>
+        <li><a href="https://developer.android.com/guide/topics/manifest/uses-feature-element">     uses-feature</a></li>
+        <li><a href="https://developer.android.com/reference/android/Manifest.permission">          List of Android permissions</a></li>
+        <li><a href="https://developer.android.com/guide/topics/manifest/uses-feature-element">     List of Android uses-feature</a></li>
+    </ul>
+</body>
+
+</html>
