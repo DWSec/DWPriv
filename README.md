@@ -1,5 +1,5 @@
-# DarkTrace
-DarkTrace is a tool designed to evaluate the privacy of Android applications and is aimed at gaining a better understanding of Android permissions in general. We have a  writeup on our research blog about why we developed the tool; it also included an example scenario of analysing the COVID-19 contact tracing apps: [link]().
+# DWTrace
+DWTrace is a tool designed to evaluate the privacy of Android applications and is aimed at gaining a better understanding of Android permissions in general. We have a  writeup on our research blog about why we developed the tool; it also included an example scenario of analysing the COVID-19 contact tracing apps: [link]().
 
 ![usage example](media/../readme_media/terminal_example.gif)
 
@@ -11,10 +11,10 @@ We hope this tool can be a valid aid to assess quickly and easily if an app resp
 
 ## Features
 ### Scoring system
-You might have noticed a number in the output when running DarkTrace from the terminal: DarkTrace allows you to define a whitelist of permissions that are allowed; it will then highlight, in the html report, whitelisted items (in green) and the rest in red, so that you can easily see if app is using a permission it's not supposed to
+You might have noticed a number in the output when running DWTrace from the terminal: DWTrace allows you to define a whitelist of permissions that are allowed; it will then highlight, in the html report, whitelisted items (in green) and the rest in red, so that you can easily see if app is using a permission it's not supposed to
 
 ### Batch or single file mode
-DarkTrace can be run on a single apk file, or a folder of apps. These are, respectively, the ```--i``` and ```--f``` options
+DWTrace can be run on a single apk file, or a folder of apps. These are, respectively, the ```--i``` and ```--f``` options
 
 ### Cheatsheet
 There are a lot of possible permissions an app can request. To make it easier to know exactly what a permission is doing, in the report, when you hover over a permission, it will bring up a detailed description of what this permission does. In a future update of the software this will also be available for the uses-feature section of the report. 
@@ -23,4 +23,4 @@ There are a lot of possible permissions an app can request. To make it easier to
 * Clone the repository and cd into it
 * create a new virtual envirornment with ```virtualenv env``` and then activate it ```env/Scripts/bin/activate```
 * install the required python libraries with ```pip install -r requirements.txt```
-* install axmldec: [link](https://github.com/ytsutano/axmldec); on Linux and Windows, move the executable in the same folder as run_darktrace.py
+* install axmldec: [link](https://github.com/ytsutano/axmldec); on Linux and Windows, move the executable in the same folder as run_dwtrace.py
