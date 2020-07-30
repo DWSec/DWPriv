@@ -34,12 +34,12 @@ if args.f:
     if platform.system() == 'Windows':
         for file in os.listdir(args.f):
             os.system('axmldec.exe -i' + args.f + file + ' -o output/AndroidManifest.xml')
-            os.system('python darktrace.py')
+            os.system('python dwtrace.py')
 
     elif platform.system() == 'Linux':
         for file in os.listdir(args.f):
             os.system('./axmldec -i '+ args.f + file + ' -o output/AndroidManifest.xml')
-            os.system('python darktrace.py')
+            os.system('python dwtrace.py')
 
     # Insert mac os here
 
@@ -47,10 +47,10 @@ if args.f:
 if args.i:
     if platform.system() == 'Windows':
         os.system('axmldec.exe -i' + args.i + ' -o output/AndroidManifest.xml')
-        os.system('python darktrace.py')
+        os.system('python dwtrace.py')
 
     if platform.system() == 'Linux':
         os.system('./axmldec -i' + args.i + ' -o output/AndroidManifest.xml')
-        os.system('python darktrace.py')
+        os.system('python dwtrace.py')
 
     # Insert mac os here
