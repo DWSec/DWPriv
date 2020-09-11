@@ -26,4 +26,4 @@ There are a lot of possible permissions an app can request. To make it easier to
 * Clone the repository and cd into it
 * create a new virtual envirornment with ```virtualenv env``` and then activate it ```env/Scripts/bin/activate```
 * install the required python libraries with ```pip install -r requirements.txt```
-* install axmldec: [link](https://github.com/ytsutano/axmldec); on Linux and Windows, move the executable in the same folder as run_dwtrace.py
+* install axmldec: [link](https://github.com/ytsutano/axmldec); on Linux and Windows, move the executable in the same folder as dwtrace.py
