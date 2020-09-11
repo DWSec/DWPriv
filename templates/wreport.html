@@ -60,13 +60,20 @@
     <h2>uses-permission ({{ permissionNumber }})</h2>
 
     <a style="color:lightgray"><i><u>Hover over a pemission to get more info on it</u></i></a><br>
+    <a style="color:lightgray"><i><u>whitelisted items are highlighted in green</u></i></a>
 
     <table id="uses-permission-table">
         {% for item in permissions %}
         <tr>
             <td class="parentCell">
+                {% if item.whitelisted == "true" %}
+                <a style="color:lawngreen">{{ item.name }}</a>
+                <span class="tooltip">{{ item.info }}</span>
+
+                {% else %}
                 <a>{{ item.name }}</a>
                 <span class="tooltip">{{ item.info }}</span>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}
