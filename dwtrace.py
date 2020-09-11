@@ -41,8 +41,25 @@ def generateSimpleReport():
         packageName = x.getAttribute('package')
 
     for permission in manifest.getElementsByTagName('uses-permission'):
-        infoString = "Description: " + cheatsheet[permission.getAttribute("android:name")]["info"]
-        permissions.append({"name": permission.getAttribute('android:name'), "whitelisted": "true", "info": infoString})
+         #check against the whitelisted / blacklisted items in the specified file
+        if permission.getAttribute('android:name') in bwlist:
+            if permission.getAttribute("android:name") in cheatsheet:
+                infoString = "Description: " + cheatsheet[permission.getAttribute("android:name")]["info"]
+                permissions.append({"name": permission.getAttribute('android:name'), "whitelisted": "true", "info": infoString})
+
+            else:
+                infoString = "Description: " + "no info found" + " - Directly collects PII?: no info found " + " - Protection Level: no info found" 
+                permissions.append({"name": permission.getAttribute('android:name'), "whitelisted": "true", "info": infoString})
+        
+        else: 
+            if permission.getAttribute("android:name") in cheatsheet:
+                infoString = "Description: " + cheatsheet[permission.getAttribute("android:name")]["info"]
+
+                permissions.append({"name": permission.getAttribute('android:name'), "whitelisted": "false", "info": infoString})
+
+            else:
+                infoString = "Description: " + "no info found" + " - Directly collects PII?: no info found " + " - Protection Level: no info found" 
+                permissions.append({"name": permission.getAttribute('android:name'), "whitelisted": "false", "info": infoString})
 
     for feature in manifest.getElementsByTagName('uses-feature'):
         features.append({"name": feature.getAttribute('android:name'), "whitelisted": "true"})
@@ -206,13 +223,11 @@ if __name__ == '__main__':
         mode = 'b'
         listFile = args.b
 
-    elif args.n:
-        generateSimpleReport()
+    if args.w or args.b:
+        bwlistTemp = open(listFile)
 
-    bwlistTemp = open(listFile)
-
-    for line in bwlistTemp.readlines():
-        bwlist.append(line.rstrip())
+        for line in bwlistTemp.readlines():
+            bwlist.append(line.rstrip())
 
     """
     ---- run the tool ----
@@ -223,12 +238,19 @@ if __name__ == '__main__':
         if platform.system() == 'Windows':
             for file in os.listdir(args.f):
                 os.system('axmldec.exe -i' + args.f + file + ' -o output/AndroidManifest.xml')
-                main()
+                if args.n:
+                    generateSimpleReport()
+                else: 
+                    main()
 
         elif platform.system() == 'Linux':
             for file in os.listdir(args.f):
                 os.system('./axmldec -i '+ args.f + file + ' -o output/AndroidManifest.xml')
-                main()
+                if args.n:
+                    generateSimpleReport()
+                
+                else: 
+                    main()
 
         # Insert mac os here
 
@@ -236,10 +258,18 @@ if __name__ == '__main__':
     if args.i:
         if platform.system() == 'Windows':
             os.system('axmldec.exe -i' + args.i + ' -o output/AndroidManifest.xml')
-            main()
+            if args.n:
+                generateSimpleReport()
+            
+            else:
+                main()
 
         if platform.system() == 'Linux':
             os.system('./axmldec -i' + args.i + ' -o output/AndroidManifest.xml')
-            main()
+            if args.n:
+                generateSimpleReport()
+            
+            else: 
+                main()
 
         # Insert mac os here
