@@ -9,19 +9,18 @@ If you then navigate to the "reports" folder, you'll notice an html file named l
 
 We hope this tool can be a valid aid to assess quickly and easily if an app respects the users's privacy. 
 
+## Latest Update
+### Whitelist, Blacklist or simple output mode
+DWTrace has been updated to support external loading of whitelisted or blacklisted items from a .txt file. To use this feature, simply run DWTrace with the option ```-w whitelist.txt``` for whitelist mode, ```-b blacklist.txt``` for blacklist mode or ```-n``` for simple output. Note that the whitelist or blacklist file can have any name, though it is important that each item in the list be separated by a new line. 
+Tip: refer to the official documentation to get a list of permissions ([link](https://developer.android.com/guide/topics/manifest/uses-permission-element))
+
 ## Features
-### Scoring system
-You might have noticed a number in the output when running DWTrace from the terminal: DWTrace allows you to define a whitelist of permissions that are allowed; it will then highlight, in the html report, whitelisted items (in green) and the rest in red, so that you can easily see if app is using a permission it's not supposed to
 
 ### Batch or single file mode
 DWTrace can be run on a single apk file, or a folder of apps. These are, respectively, the ```--i``` and ```--f``` options
 
 ### Cheatsheet
-There are a lot of possible permissions an app can request. To make it easier to know exactly what a permission is doing, in the report, when you hover over a permission, it will bring up a detailed description of what this permission does. In a future update of the software this will also be available for the uses-feature section of the report. In a future update, the whitelist will also be available as a standalone html file to quickly and easily get more info on any android permission.
-
-### Whitelist
-You might have noticed that some items in the output are highlighted in red and some in green. This is because DWTtrace allows you to define whitelisted items (that will be highlighted in green). More info on why you might want to use this feature in [this article](https://research.darkwaves.io/privacy-tracing-and-tracking-on-android/).
-Currently, to edit the whitelist, you need to edit the ```dwtrace.py``` file; there exist two arrays, one called ```whitelistedPermissions```, and the other ```whitelistedHardware``` that you can edit to add any permissions you want. In a future update there will be an easy to reference cheatsheet in html format with all the Android permissions, and the whitelist will be moved to a separate json file. 
+There are a lot of possible permissions an app can request. To make it easier to know exactly what a permission is doing, in the report, when you hover over a permission, it will bring up a detailed description of what this permission does. In a future update of the software this will also be available for the uses-feature section of the report. In a future update, the whitelist will also be available as a standalone html file to quickly and easily get more info on any android permission. For the moment, you can refer to the official android documentation on [uses-permission](https://developer.android.com/guide/topics/manifest/uses-permission-element) and [uses-feature](https://developer.android.com/guide/topics/manifest/uses-feature-element)
 
 # Installation
 * Clone the repository and cd into it
