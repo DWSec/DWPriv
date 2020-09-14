@@ -1,4 +1,4 @@
-# dwtrace 2.0 - Marco Mura - 2020
+# DWPriv 2.0 - Marco Mura - 2020
 # changelog: the code sucks less
 
 import os
