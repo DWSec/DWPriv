@@ -1,12 +1,6 @@
 # DWPriv
 DWPriv is a tool designed to evaluate the privacy of Android applications and is aimed at gaining a better understanding of Android permissions in general. We have a  writeup on our research blog about why we developed the tool; it also included an example scenario of analysing the COVID-19 contact tracing apps: [link](https://research.darkwaves.io/privacy-tracing-and-tracking-on-android/).
 
-![usage example](readme_media/terminal_example.gif)
-
-If you then navigate to the "reports" folder, you'll notice an html file named like the app's package name, and if you open it:
-
-![usage example](readme_media/output_example.gif)
-
 We hope this tool can be a valid aid to assess quickly and easily if an app respects the users's privacy. 
 
 ## Latest Update
