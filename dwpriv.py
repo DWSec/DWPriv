@@ -245,7 +245,7 @@ if __name__ == '__main__':
     if args.f:
         if platform.system() == 'Windows':
             for file in os.listdir(args.f):
-                os.system('axmldec.exe -i' + args.f + file + ' -o output/AndroidManifest.xml')
+                os.system('.\\axmldec.exe -i' + args.f + file + ' -o output/AndroidManifest.xml')
                 if args.n:
                     generateSimpleReport()
                 else: 
@@ -265,7 +265,7 @@ if __name__ == '__main__':
     # if a single file is specified
     if args.i:
         if platform.system() == 'Windows':
-            os.system('axmldec.exe -i' + args.i + ' -o output/AndroidManifest.xml')
+            os.system('.\\axmldec.exe -i' + args.i + ' -o output/AndroidManifest.xml')
             if args.n:
                 generateSimpleReport()
             
