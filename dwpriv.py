@@ -22,11 +22,10 @@ with open ("cheatsheet.json") as f:
 # the whitelist or blacklist
 bwlist = []
 
-
-#load and parse the AndroidManifest.xml
-manifest = md.parse('output/AndroidManifest.xml')
-
 def generateSimpleReport():
+    #load and parse the AndroidManifest.xml
+    manifest = md.parse('output/AndroidManifest.xml')
+
     permissions = []
     features = []
 
@@ -76,6 +75,9 @@ def generateSimpleReport():
 
 
 def generateReport(packageName, permissionNumber, featureNumber, permissions, features):
+    #load and parse the AndroidManifest.xml
+    manifest = md.parse('output/AndroidManifest.xml')
+    
     #flask stuff I guess
     app = flask.Flask('my app')    
     
@@ -94,6 +96,9 @@ def generateReport(packageName, permissionNumber, featureNumber, permissions, fe
         reportFile.close()
 
 def getUsesPermission(): 
+    #load and parse the AndroidManifest.xml
+    manifest = md.parse('output/AndroidManifest.xml')
+
     permissions = []
 
     for permission in manifest.getElementsByTagName('uses-permission'):
@@ -140,6 +145,9 @@ def getUsesPermission():
     return permissions
 
 def main():
+    #load and parse the AndroidManifest.xml
+    manifest = md.parse('output/AndroidManifest.xml')
+
     features = []
 
     # number of used features and permissions
